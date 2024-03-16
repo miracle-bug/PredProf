@@ -1,0 +1,32 @@
+with open('books.txt', encoding='UTF8') as f:
+    n = f.readline()
+    a = f.readlines()
+    mas = []
+    for i in range(len(a)):
+        mas.append(a[i].strip().split('%'))
+authors = []
+for n in range(len(mas)):
+    if mas[n][2] not in authors:
+        authors.append([mas[n][2], 0, 0])
+
+for i in range(len(mas)):
+    for k in range(len(authors)):
+        if authors[k][0] == mas[i][2]:
+            authors[k][1] += float(mas[i][5].replace(',', '.'))
+            authors[k][2] += 1
+au_re = []
+for n in range(len(authors)):
+    au_re.append([authors[n][0], authors[n][1]/authors[n][2]])
+mi = 1000
+
+
+for i in range(len(au_re)):
+    if au_re[i][1] < int(mi):
+        mi = au_re[i][1]
+for i in range(len(au_re)):
+    if au_re[i][1] == mi:
+        print(au_re[i][0], mi, sep=' - ')
+
+
+
+
