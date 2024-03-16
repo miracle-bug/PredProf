@@ -18,8 +18,7 @@ au_re = []
 for n in range(len(authors)):
     au_re.append([authors[n][0], authors[n][1]/authors[n][2]])
 mi = 1000
-
-
+v = open('books_new.csv', 'w', encoding='UTF8')
 for i in range(len(au_re)):
     if au_re[i][1] < int(mi):
         mi = au_re[i][1]
